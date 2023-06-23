@@ -1,5 +1,5 @@
 import { fetchPrice } from '@/store/priceSlice'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Header } from './Header'
 import { Pagination } from './Pagination'
@@ -8,13 +8,12 @@ import { Table } from './Table'
 
 export function MainContent() {
    const timeout = useSelector(state => state.price.timeout)
+   const pricesLength = useSelector(state => state.price.prices.length)
    const dispatch = useDispatch()
-   const [isFirstFetchDone, setIsFirstFetchDone] = useState(false)
 
    useEffect(() => {
-      if (!isFirstFetchDone) {
+      if (!pricesLength) {
          dispatch(fetchPrice())
-         setIsFirstFetchDone(true)
       }
       const interval = setInterval(() => {
          dispatch(fetchPrice())
@@ -23,7 +22,7 @@ export function MainContent() {
       return () => {
          clearInterval(interval)
       }
-   }, [timeout])
+   }, [timeout, pricesLength])
 
    return (
       <div className='main-container'>

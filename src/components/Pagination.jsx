@@ -7,9 +7,9 @@ export function Pagination({ pricesLength, currentPage, pageSize }) {
    function handlePageChange(currentPage) {
       dispatch(setCurrentPage({ currentPage }))
    }
-   if (!pricesLength) return
 
-   return pricesLength > pageSize && (
+   return (
+      pricesLength > pageSize && (
          <div className='pagination'>
             {[...Array(Math.ceil(pricesLength / pageSize)).keys()].map(pageNumber => (
                <button
@@ -22,4 +22,5 @@ export function Pagination({ pricesLength, currentPage, pageSize }) {
             ))}
          </div>
       )
+   )
 }

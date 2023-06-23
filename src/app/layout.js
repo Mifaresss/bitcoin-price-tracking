@@ -1,5 +1,5 @@
-import './styles/reset.css'
 import './styles/globals.css'
+import './styles/reset.css'
 
 export const metadata = {
    title: 'Bitcoin price tracking',
@@ -9,7 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
    return (
       <html lang='en'>
-         <body className='bg-zinc-900 text-zinc-100 leading-tight text-xl'>{children}</body>
+         <body className='bg-zinc-900 text-zinc-100 leading-tight'>{children}</body>
       </html>
    )
 }

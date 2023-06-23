@@ -2,38 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-}
-
 body {
    font-family: system-ui, sans-serif;
+   font-size: calc(min(0.9063rem + 4 * ((100vw - 320px) / (992 - 320)), 1.25rem));
 }
 
 .main-container {
-   margin-top: 3.125rem;
+   margin-top: 2.1875rem;
    display: grid;
    grid-template-columns: 23% 75.3%;
    justify-content: space-between;
 }
+.header {
+   font-size: calc(min(1.0625rem + 7 * ((100vw - 320px) / (992 - 320)), 1.3rem));
+   gap: calc(min(1.0625rem + 7 * ((100vw - 320px) / (992 - 320)), 1.5rem));
+}
 .table {
-   margin-top: 1rem;
+   margin-top: calc(0.625rem + 4 * ((100vw - 320px) / (992 - 320)));
    padding: 1rem;
-
+   width: 100%;
+   display: flex;
+   gap: 0.625rem;
+   flex-direction: column;
+   min-height: 36.0625rem;
+}
+.table__head {
    display: grid;
-   grid-template-columns: 52% 46%;
+   grid-template-columns: 1fr 1fr;
+   padding: calc(min(0.3125rem + 3 * ((100vw - 320px) / (992 - 320)), 0.5rem));
+   border-radius: 0.5rem;
+}
+.table__head-section {
+   text-align: center;
+}
+.table__body {
+   border-radius: 0.5rem;
+   padding: 0.5rem;
+   background-color: rgb(63 63 70);
+   display: flex;
+   flex-direction: column;
+   gap: 2px;
+}
+.table__body-section {
+   display: grid;
+   grid-template-columns: 49% 49%;
    justify-content: space-between;
-   height: 35.5444rem;
 }
 
 .sort__label {
-   padding: 8px 13px;
+   flex: 1 1 auto;
+   padding: 8px 5px;
+   white-space: nowrap;
    cursor: pointer;
    text-align: center;
    font-size: 0.875rem;
-   width: fit-content;
    border-radius: 0.5rem;
    transition: background-color 0.2s;
    transition: color 0.2s;
+   margin: 2px;
 }
 .sort__label:hover {
    background-color: #3f3f46;
@@ -47,7 +73,9 @@ body {
    appearance: none;
    position: absolute;
 }
-
+.table-date-price-text {
+   font-size: calc(min(1rem + 7 * ((100vw - 320px) / (992 - 320)), 1.25rem));
+}
 .pagination {
    display: flex;
    justify-content: center;
@@ -70,4 +98,102 @@ body {
 .pagination button.active {
    background-color: #3f3f46;
    border: 1.5px solid;
+}
+
+.wrapper-burger-button {
+   display: none;
+   padding: 20px 10px;
+   background-color: #18181b;
+   height: 1rem;
+   justify-content: center;
+   align-items: center;
+   border-radius: 50%;
+   position: absolute;
+   left: 0.625rem;
+   cursor: pointer;
+   z-index: 10;
+}
+.menu-button {
+   position: relative;
+   width: 1.5rem;
+   height: 1rem;
+}
+.menu-button span {
+   display: block;
+   width: 100%;
+   height: 1.5px;
+   background-color: rgb(244, 244, 245);
+   border-radius: 1.5px;
+}
+.menu-button:before,
+.menu-button:after {
+   position: absolute;
+   content: '';
+   background-color: rgb(244, 244, 245);
+   width: 100%;
+   height: 1.5px;
+   left: 0;
+   border-radius: 1.5px;
+   transition: width 0.2s;
+}
+.menu-button:before {
+   top: 0;
+}
+.menu-button:after {
+   bottom: 0;
+}
+
+.wrapper-burger-button:hover .menu-button:before {
+   width: 75%;
+}
+.wrapper-burger-button:hover .menu-button:after {
+   width: 50%;
+}
+
+.wrapper-burger-button.open .menu-button:before {
+   top: 50%;
+   transform: rotate(45deg);
+}
+.wrapper-burger-button.open .menu-button:after {
+   top: 50%;
+   transform: rotate(-45deg);
+}
+.wrapper-burger-button.open .menu-button span {
+   display: none;
+}
+.wrapper-burger-button.open:hover .menu-button:before,
+.wrapper-burger-button.open:hover .menu-button:after {
+   width: 100%;
+}
+
+@media (max-width: 37.5rem) {
+   .main-container {
+      display: block;
+   }
+   .header {
+      justify-content: end;
+   }
+   .wrapper-burger-button {
+      display: flex;
+   }
+   .sorter {
+      max-width: 17.5rem;
+   }
+   .wrapper-sorter {
+      transition: right 0.5s;
+      right: -100%;
+      top: 0;
+      height: 100vh;
+      position: fixed;
+      background-color: #ffffff18;
+      backdrop-filter: blur(0.25rem);
+      z-index: 1;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+   .wrapper-sorter.open {
+      right: 0;
+   }
 }

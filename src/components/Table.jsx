@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux'
 import { Error } from './Error'
 import { Pagination } from './Pagination'
 import { Preloader } from './Preloader'
-import { TableDateColumn } from './TableDateColumn'
-import { TablePriceColumn } from './TablePriceColumn'
+import { TableBody } from './TableBody'
+import { TableHead } from './TableHead'
 
 export function Table() {
    const [prices, setBitcoin] = useState([])
@@ -29,8 +29,10 @@ export function Table() {
    return prices.length ? (
       <>
          <div className='table bg-zinc-800 rounded-xl'>
-            <TableDateColumn paginatedPrices={paginatedPrices} />
-            <TablePriceColumn paginatedPrices={paginatedPrices} />
+            <TableHead />
+            <TableBody paginatedPrices={paginatedPrices} />
+            {/* <TableDateColumn paginatedPrices={paginatedPrices} />
+            <TablePriceColumn paginatedPrices={paginatedPrices} /> */}
          </div>
          <Pagination pricesLength={prices.length} currentPage={currentPage} pageSize={pageSize} />
       </>

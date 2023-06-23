@@ -11,7 +11,7 @@ export function ResetButton() {
    return (
       <button
          onClick={resetTable}
-         className='absolute right-0 -bottom-11 text-base px-3 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 w-fit justify-self-end'
+         className='reset-button absolute right-0 -bottom-11 text-base px-3 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 w-fit justify-self-end'
       >
          Reset table
       </button>
