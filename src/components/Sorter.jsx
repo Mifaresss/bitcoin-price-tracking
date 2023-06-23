@@ -4,6 +4,7 @@ import { ResetButton } from './ResetButton'
 
 export function Sorter() {
    const dispatch = useDispatch()
+   
    function handleChecked(e) {
       dispatch(sort({ type: e.target.id }))
    }
