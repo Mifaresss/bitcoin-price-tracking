@@ -8,7 +8,7 @@ export function TablePriceColumn({paginatedPrices}) {
             <p>Price</p>
          </TableHead>
          {paginatedPrices.map(({ price }) => (
-            <p className='shadow-md pl-2 py-1 rounded-md' key={Math.random()}>
+            <p className='shadow-md pl-2 py-1 rounded-md' key={price + Math.random()}>
                {price.toLocaleString().split(',')[0]}$
             </p>
          ))}
