@@ -8,7 +8,7 @@ export function TableDateColumn({paginatedPrices}) {
             <p>Date & Time</p>
          </TableHead>
          {paginatedPrices.map(({ date }) => (
-            <p className='shadow-md pl-2 py-1 rounded-md' key={date}>
+            <p className='shadow-md pl-2 py-1 rounded-md' key={date + Math.random()}>
                {new Date(date).toLocaleString()}
             </p>
          ))}

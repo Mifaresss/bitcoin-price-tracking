@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { Error } from './Error'
 import { Pagination } from './Pagination'
 import { Preloader } from './Preloader'
-import { TableHead } from './TableHead'
 import { TableDateColumn } from './TableDateColumn'
 import { TablePriceColumn } from './TablePriceColumn'
 

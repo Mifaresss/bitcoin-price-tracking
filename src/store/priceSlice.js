@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 export const fetchPrice = createAsyncThunk('bitcoin/fetchPrice', async () => {
    try {
       const response = await fetch(
-         `https://coin-realy.mobilauto.com.ua/v1/cryptocurrency/quotes/latest?id=1&${process.env.API_KEY}`
+         'https://coin-realy.mobilauto.com.ua/v1/cryptocurrency/quotes/latest?id=1&CMC_PRO_API_KEY=e3d69114-b9c3-4ea3-88dc-eff7238d2c29'
       )
       if (response.ok) {
          const generalData = await response.json()
@@ -46,7 +46,7 @@ const priceSlice = createSlice({
                break
          }
       },
-      clearPrices() {
+      clearPrices(state) {
          state.prices = []
       },
       setCurrentPage(state, { payload }) {

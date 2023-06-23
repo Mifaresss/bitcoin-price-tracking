@@ -1,12 +1,15 @@
 'use client'
-import { store } from '@/store/store'
+import { persistor, store } from '@/store/store'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 import { MainContent } from './MainContent'
 
 export function StartComponent() {
    return (
       <Provider store={store}>
-         <MainContent />
+         <PersistGate persistor={persistor}>
+            <MainContent />
+         </PersistGate>
       </Provider>
    )
 }
